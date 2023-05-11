@@ -68,10 +68,10 @@ function displayInventoryItems() {
         const img = document.createElement("img");
 
         if (i >= items.length) {
-            img.setAttribute("src", "./img/none.webp");
+            img.setAttribute("src", "./src/img/none.webp");
         } else {
             let itemObj = findItem(items[i]);
-            let srcStr = "./img/mythics/" + itemObj.src + ".webp";
+            let srcStr = "./src/img/mythics/" + itemObj.src + ".webp";
             img.setAttribute("src", srcStr);
 
             let onclickCmd = "removeFromList({name: '" + itemObj.name + "'})";
@@ -97,7 +97,7 @@ function displayBuyableItems() {
         img.setAttribute("onclick", onclickCmd);
 
         // set src
-        let srcStr = "./img/mythics/" + mythicItemList[i].src + ".webp";
+        let srcStr = "./src/img/mythics/" + mythicItemList[i].src + ".webp";
         img.setAttribute("src", srcStr);
 
         // add image to div
