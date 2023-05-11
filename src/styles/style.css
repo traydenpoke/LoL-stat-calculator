@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+body {
+    background: rgb(120, 209, 255);
+    background: linear-gradient(90deg, rgb(63, 191, 255) 0%, rgb(68, 163, 251) 50%, rgb(110, 144, 202) 100%);
+    font-family: "Poppins", sans-serif;
+}
+
+h1 {
+    color: #fff5f5;
+    margin-bottom: 0px;
+}
+
+h2 {
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+img:hover {
+    cursor: pointer;
+}
+
+img {
+    width: 64px;
+    height: 64px;
+    margin: 10px;
+}
+
+
+
+#mythic-items {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#mythic-items img {
+    border: 3px solid #FFD700;
+    border-radius: 5px;
+}
+
+#item-display {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#item-display #mythic {
+    border: 3px solid #FFD700;
+}
+
+#item-display img {
+    border: 3px solid;
+    border-radius: 5px;
+}
+
+#stat-display {
+    display: grid;
+    grid-template-columns: repeat(4, 25vh);
+    grid-template-rows: repeat(5, 65px);
+    font-size: 20px;
+}
+
+/* stat-display for individual media widths */
