@@ -19,6 +19,8 @@ function findItem(obj) {
 
 function addToList(obj) {
     let itemObj = findItem(obj);
+    // problem is within findItem(), only checks for mythics, need to check for type?
+    // can have multiple if statements, one for each type, OR have one master list?
 
     if (itemObj.type === "mythic" && hasMythic) {
         alert(`Mythic item '${currentMythic.name}' already in inventory. Remove to change to a different one.`);
@@ -30,7 +32,7 @@ function addToList(obj) {
     } else {
         if (items.length !== 6) {
             items.push(itemObj);
-            alert(`${itemObj.name} added to list.`);
+            //alert(`${itemObj.name} added to list.`);
             if (itemObj.type === "mythic") {
                 hasMythic = true;
                 currentMythic = itemObj;
@@ -48,7 +50,7 @@ function addToList(obj) {
 function removeFromList(obj) {
     let itemObj = findItem(obj);
 
-    alert(`${itemObj.name} removed from list.`);
+    //alert(`${itemObj.name} removed from list.`);
     items.splice(items.indexOf(itemObj), 1);
 
     if (itemObj.type === "mythic") {
@@ -64,6 +66,7 @@ function removeFromList(obj) {
 function displayInventoryItems() {
     let div = document.getElementById("item-display");
     div.innerHTML = "";
+
     for (let i = 0; i < 6; i++) {
         const img = document.createElement("img");
 
@@ -79,15 +82,15 @@ function displayInventoryItems() {
 
             img.setAttribute("id", "mythic");
         }
-
-
         div.appendChild(img);
     }
 }
 
 // display items in grid (addable ones)
 function displayBuyableItems() {
-    const div = document.getElementById("mythic-items");
+
+    // mythic items
+    const mythicDiv = document.getElementById("mythic-items");
     for (let i = 0; i < mythicItemList.length; i++) {
 
         const img = document.createElement("img");
@@ -101,9 +104,26 @@ function displayBuyableItems() {
         img.setAttribute("src", srcStr);
 
         // add image to div
-        div.appendChild(img);
+        mythicDiv.appendChild(img);
     }
 
+    // legendary items
+    const legendaryDiv = document.getElementById("legendary-items");
+    for (let i = 0; i < legendaryItemList.length; i++) {
+
+        const img = document.createElement("img");
+
+        // set onclick
+        let onclickCmd = "addToList({name: '" + legendaryItemList[i].name + "'})";
+        img.setAttribute("onclick", onclickCmd);
+
+        // set src
+        let srcStr = "./src/img/legendaries/" + legendaryItemList[i].src + ".webp";
+        img.setAttribute("src", srcStr);
+
+        // add image to div
+        legendaryDiv.appendChild(img);
+    }
 }
 
 
@@ -165,4 +185,15 @@ function goldStatValue(item) {
         }
     }
     return value;
+}
+
+function showAllItems() {
+    const x = document.getElementById("items");
+
+    if (x.style.display === "none") {
+        x.style.display = "block";
+    } else {
+        x.style.display = "none";
+    }
+
 }

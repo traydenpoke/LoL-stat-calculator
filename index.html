@@ -4,6 +4,7 @@
 <head>
     <title>LoL Stat Displayer</title>
     <link rel="stylesheet" href="./src/styles/style.css" />
+    <link rel="stylesheet" href="./src/styles/itemDisplays.css" />
     <script src="./src/script.js"></script>
     <script src="./src/helpers/StatRatios.js"></script>
     <script src="./src/helpers/MythicItems.js"></script>
@@ -11,19 +12,23 @@
 </head>
 
 <body onload="displayBuyableItems();display()">
-    <h1>Mythic Items</h1>
-    <div id="mythic-items"></div>
-
-    <h1>Legendary Items</h1>
-    <div id="legendary-items"></div>
 
     <h2>Current Items (click to remove):</h2>
-    <p id="itemlist"></p>
-
     <div id="item-display"></div>
-
     <h2>Item Stats:</h2>
     <div id="stat-display"></div>
+
+    <button id="show-items-button" onclick="showAllItems()">Toggle Item Display</button>
+    <div id="items">
+        <h1>Mythic Items</h1>
+        <div id="mythic-items"></div>
+
+        <h1>Legendary Items</h1>
+        <div id="legendary-items"></div>
+    </div>
+
+
+
 </body>
 
 </html>

@@ -1,0 +1,45 @@
+img {
+    width: 70px;
+    height: 70px;
+    margin: 10px;
+}
+
+img:hover {
+    cursor: pointer;
+}
+
+#mythic-items {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#mythic-items img {
+    border: 3px solid #FFD700;
+    border-radius: 5px;
+}
+
+#legendary-items {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#legendary-items img {
+    border: 3px solid;
+    border-radius: 5px;
+}
+
+#item-display {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: zpx;
+    margin-bottom: 10px;
+}
+
+#item-display #mythic {
+    border: 3px solid #FFD700;
+}
+
+#item-display img {
+    border: 3px solid;
+    border-radius: 5px;
+}
