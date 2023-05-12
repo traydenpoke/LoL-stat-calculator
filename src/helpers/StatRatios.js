@@ -19,7 +19,8 @@ window.calculations = {
     "armor": [15, 300],             // Armor
     "mr": [25, 450],                // Magic Resistance
     "ms": [25, 300],                // Movement Speed
-    "tenacity": [35, 50]            // Tenacity
+    "percentms": [5, 400],          // % Movement Speed
+    "tenacity": [35, 50],            // Tenacity
 };
 
 
@@ -43,6 +44,7 @@ window.statStrs = [
     ["armor", "Armor"],
     ["mr", "Magic Resistance"],
     ["ms", "Movement Speed"],
+    ["percentms", "% Movement Speed"],
     ["tenacity", "Tenacity"],
     ["cost", "Cost"]
 ];

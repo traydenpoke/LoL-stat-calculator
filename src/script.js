@@ -6,15 +6,23 @@ let currentMythic;
 function display() {
     displayInventoryItems();
     statInfo();
-    //console.log(items);
 }
 
 function findItem(obj) {
-    for (let i = 0; i < mythicItemList.length; i++) {
-        if (mythicItemList[i].name == obj.name) {
-            return mythicItemList[i];
+    if (obj.type === "mythic") {
+        for (let i = 0; i < mythicItemList.length; i++) {
+            if (mythicItemList[i].name == obj.name) {
+                return mythicItemList[i];
+            }
+        }
+    } else if (obj.type === "legendary") {
+        for (let i = 0; i < legendaryItemList.length; i++) {
+            if (legendaryItemList[i].name == obj.name) {
+                return legendaryItemList[i];
+            }
         }
     }
+
 }
 
 function addToList(obj) {
@@ -23,12 +31,12 @@ function addToList(obj) {
     // can have multiple if statements, one for each type, OR have one master list?
 
     if (itemObj.type === "mythic" && hasMythic) {
-        alert(`Mythic item '${currentMythic.name}' already in inventory. Remove to change to a different one.`);
+        alert(`There is already mythic item '${currentMythic.name}' in inventory. Remove to change to a different one.`);
         return;
     }
 
     if (items.find((existing) => existing.name === itemObj.name)) {
-        alert(`${itemObj.name} already in list.`);
+        alert(`${itemObj.name} is already in inventory.`);
     } else {
         if (items.length !== 6) {
             items.push(itemObj);
@@ -37,13 +45,10 @@ function addToList(obj) {
                 hasMythic = true;
                 currentMythic = itemObj;
             }
+        } else {
+            alert(`Max size reached. Remove items to add more.`);
         }
     }
-
-    if (items.length === 6) {
-        alert(`Max size reached. Remove items to add more.`);
-    }
-
     display();
 }
 
@@ -57,7 +62,6 @@ function removeFromList(obj) {
         hasMythic = false;
         currentMythic = undefined;
     }
-    console.log("here)");
 
     display();
 }
@@ -74,13 +78,23 @@ function displayInventoryItems() {
             img.setAttribute("src", "./src/img/none.webp");
         } else {
             let itemObj = findItem(items[i]);
-            let srcStr = "./src/img/mythics/" + itemObj.src + ".webp";
-            img.setAttribute("src", srcStr);
+            if (itemObj.type === "mythic") {
+                let srcStr = "./src/img/mythics/" + itemObj.src + ".webp";
+                img.setAttribute("src", srcStr);
 
-            let onclickCmd = "removeFromList({name: '" + itemObj.name + "'})";
-            img.setAttribute("onclick", onclickCmd);
+                let onclickCmd = "removeFromList({name: '" + itemObj.name + "', type: \"mythic\"})";
+                img.setAttribute("onclick", onclickCmd);
 
-            img.setAttribute("id", "mythic");
+                img.setAttribute("id", "mythic"); // so that mythics will have yellow border in inventory
+
+            } else if (itemObj.type === "legendary") {
+                let srcStr = "./src/img/legendaries/" + itemObj.src + ".webp";
+                img.setAttribute("src", srcStr);
+
+                let onclickCmd = "removeFromList({name: '" + itemObj.name + "', type: \"legendary\"})";
+                img.setAttribute("onclick", onclickCmd);;
+            }
+
         }
         div.appendChild(img);
     }
@@ -96,7 +110,7 @@ function displayBuyableItems() {
         const img = document.createElement("img");
 
         // set onclick
-        let onclickCmd = "addToList({name: '" + mythicItemList[i].name + "'})";
+        let onclickCmd = "addToList({name: '" + mythicItemList[i].name + "', type: \"mythic\"})";
         img.setAttribute("onclick", onclickCmd);
 
         // set src
@@ -114,7 +128,7 @@ function displayBuyableItems() {
         const img = document.createElement("img");
 
         // set onclick
-        let onclickCmd = "addToList({name: '" + legendaryItemList[i].name + "'})";
+        let onclickCmd = "addToList({name: '" + legendaryItemList[i].name + "', type: \"legendary\"})";
         img.setAttribute("onclick", onclickCmd);
 
         // set src
@@ -131,29 +145,40 @@ function statInfo() {
     const div = document.getElementById("stat-text");
     div.innerHTML = "";
     for (let stat of statStrs) {
-        const textElem = document.createElement("p");
-        const text = document.createTextNode(createStatStr(stat));
+        const textStatElem = document.createElement("p");
+        const textStat = document.createTextNode(stat[1]);
+        textStatElem.appendChild(textStat);
+        div.appendChild(textStatElem);
 
-        textElem.appendChild(text);
-        div.appendChild(textElem);
+        const textAmtElem = document.createElement("p");
+        const textAmt = document.createTextNode(getStatStr(stat));
+        textAmtElem.appendChild(textAmt);
+        div.appendChild(textAmtElem);
     }
 
     // calculate and add gold efficiency as well
-    const goldEfficiency = document.createElement("p");
-    const goldValue = document.createTextNode(`Gold Efficiency ${calcGoldValue()}%`);
-    goldEfficiency.appendChild(goldValue);
-    div.appendChild(goldEfficiency);
+
+
+    const goldEfficiencyStr = document.createElement("p");
+    const goldValueStr = document.createTextNode(`Gold Efficiency %`);
+    goldEfficiencyStr.appendChild(goldValueStr);
+    div.appendChild(goldEfficiencyStr);
+
+    const goldEfficiencyAmt = document.createElement("p");
+    const goldValueAmt = document.createTextNode(calcGoldValue());
+    goldEfficiencyAmt.appendChild(goldValueAmt);
+    div.appendChild(goldEfficiencyAmt);
 
 }
 
-function createStatStr(stat) {
+function getStatStr(stat) {
     let sum = 0;
     for (let item of items) {
         if (item[stat[0]] !== 0) {
             sum += item[stat[0]];
         }
     }
-    return `${stat[1]} ${sum}`;
+    return `${sum}`;
 }
 
 

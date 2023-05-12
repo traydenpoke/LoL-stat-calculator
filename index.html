@@ -4,7 +4,6 @@
 <head>
     <title>LoL Stat Displayer</title>
     <link rel="stylesheet" href="./src/styles/style.css" />
-    <link rel="stylesheet" href="./src/styles/itemDisplays.css" />
     <script src="./src/script.js"></script>
     <script src="./src/helpers/StatRatios.js"></script>
     <script src="./src/helpers/MythicItems.js"></script>
@@ -13,7 +12,7 @@
 
 <body onload="displayBuyableItems();display();showStats()">
 
-    <h1>Inventory (click on an item to remove)</h1>
+    <h1 id="top-text"></h1>
     <div id="current-items-display"></div>
     <button class="visiblity-button" id="stat-display-button" onclick="showStats()">Show Stats</button>
     <div id="stats-display">
