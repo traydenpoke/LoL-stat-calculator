@@ -1,45 +1,56 @@
 img {
-    width: 70px;
-    height: 70px;
+    width: 75px;
+    height: 75px;
     margin: 10px;
+    transition: 0.3s;
 }
 
 img:hover {
     cursor: pointer;
+    transform: scale(1.25);
+    opacity: 0.8;
 }
 
-#mythic-items {
+#mythic-items,
+#legendary-items {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 #mythic-items img {
     border: 3px solid #FFD700;
     border-radius: 5px;
-}
-
-#legendary-items {
-    display: flex;
-    flex-wrap: wrap;
+    margin-right: 5px;
+    margin-left: 5px;
 }
 
 #legendary-items img {
     border: 3px solid;
     border-radius: 5px;
+    margin-right: 5px;
+    margin-left: 5px;
 }
 
-#item-display {
+#current-items-display {
     display: flex;
     flex-wrap: wrap;
-    margin-top: zpx;
+    justify-content: center;
+    margin-top: -5px;
     margin-bottom: 10px;
 }
 
-#item-display #mythic {
+#current-items-display #mythic {
     border: 3px solid #FFD700;
 }
 
-#item-display img {
+#current-items-display img {
     border: 3px solid;
     border-radius: 5px;
+    width: 150px;
+    height: 150px;
+}
+
+#current-items-display img:hover {
+    transform: scale(1.1);
 }

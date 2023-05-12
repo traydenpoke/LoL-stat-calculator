@@ -64,7 +64,7 @@ function removeFromList(obj) {
 
 // display items in grid (removable ones)
 function displayInventoryItems() {
-    let div = document.getElementById("item-display");
+    let div = document.getElementById("current-items-display");
     div.innerHTML = "";
 
     for (let i = 0; i < 6; i++) {
@@ -128,7 +128,7 @@ function displayBuyableItems() {
 
 
 function statInfo() {
-    const div = document.getElementById("stat-display");
+    const div = document.getElementById("stat-text");
     div.innerHTML = "";
     for (let stat of statStrs) {
         const textElem = document.createElement("p");
@@ -140,7 +140,7 @@ function statInfo() {
 
     // calculate and add gold efficiency as well
     const goldEfficiency = document.createElement("p");
-    const goldValue = document.createTextNode(`Gold Efficiency: ${calcGoldValue()}%`);
+    const goldValue = document.createTextNode(`Gold Efficiency ${calcGoldValue()}%`);
     goldEfficiency.appendChild(goldValue);
     div.appendChild(goldEfficiency);
 
@@ -153,7 +153,7 @@ function createStatStr(stat) {
             sum += item[stat[0]];
         }
     }
-    return `${stat[1]}: ${sum}`;
+    return `${stat[1]} ${sum}`;
 }
 
 
@@ -187,13 +187,28 @@ function goldStatValue(item) {
     return value;
 }
 
-function showAllItems() {
-    const x = document.getElementById("items");
+function showStats() {
+    const x = document.getElementById("stats-display");
+    const buttonText = document.getElementById("stat-display-button");
 
     if (x.style.display === "none") {
         x.style.display = "block";
+        buttonText.innerText = "Hide Stats";
     } else {
         x.style.display = "none";
+        buttonText.innerText = "Show Stats";
     }
+}
 
+function showAllItems() {
+    const x = document.getElementById("items-display");
+    const buttonText = document.getElementById("item-display-button");
+
+    if (x.style.display === "none") {
+        x.style.display = "block";
+        buttonText.innerText = "Hide Items";
+    } else {
+        x.style.display = "none";
+        buttonText.innerText = "Show Items";
+    }
 }

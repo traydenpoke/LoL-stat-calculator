@@ -11,15 +11,19 @@
     <script src="./src/helpers/LegendaryItems.js"></script>
 </head>
 
-<body onload="displayBuyableItems();display()">
+<body onload="displayBuyableItems();display();showStats()">
 
-    <h2>Current Items (click to remove):</h2>
-    <div id="item-display"></div>
-    <h2>Item Stats:</h2>
-    <div id="stat-display"></div>
+    <h1>Inventory (click on an item to remove)</h1>
+    <div id="current-items-display"></div>
+    <button class="visiblity-button" id="stat-display-button" onclick="showStats()">Show Stats</button>
+    <div id="stats-display">
+        <h1>Item Stats</h1>
+        <div id="stat-text"></div>
+    </div>
 
-    <button id="show-items-button" onclick="showAllItems()">Toggle Item Display</button>
-    <div id="items">
+
+    <button class="visiblity-button" id="item-display-button" onclick="showAllItems()">Hide Items</button>
+    <div id="items-display">
         <h1>Mythic Items</h1>
         <div id="mythic-items"></div>
 
