@@ -37,6 +37,63 @@ h2 {
     margin-bottom: -25px;
 }
 
+
+@media only screen and (max-width: 900px) {
+    #stat-text {
+        grid-template-columns: repeat(2, 25vh 20vh);
+        grid-template-rows: repeat(11, 4.2vh);
+    }
+}
+
+@media only screen and (max-width: 750px) {
+    #stat-text {
+        grid-template-columns: repeat(2, 25vh 15vh);
+        grid-template-rows: repeat(11, 4.2vh);
+    }
+}
+
+@media only screen and (max-width: 650px) {
+    #stat-text {
+        grid-template-columns: repeat(2, 20vh 15vh);
+        grid-template-rows: repeat(11, 4.2vh);
+        font-size: 16px;
+    }
+}
+
+@media only screen and (max-width: 550px) {
+    #stat-text {
+        grid-template-columns: repeat(2, 20vh 10vh);
+        grid-template-rows: repeat(11, 4.2vh);
+        font-size: 16px;
+    }
+}
+
+@media only screen and (max-width: 550px) {
+    #stat-text {
+        grid-template-columns: repeat(2, 16vh 8vh);
+        grid-template-rows: repeat(11, 4.2vh);
+        font-size: 12px;
+    }
+}
+
+
+@media only screen and (max-width: 420px) {
+    #stat-text {
+        grid-template-columns: repeat(2, 14vh 5vh);
+        grid-template-rows: repeat(11, 4.2vh);
+    }
+}
+
+@media only screen and (max-width: 350px) {
+    #stat-text {
+        grid-template-columns: repeat(2, 12vh 5vh);
+        grid-template-rows: repeat(11, 4.2vh);
+        font-size: 10px;
+    }
+}
+
+
+
 .visiblity-button {
     font-family: "Poppins", sans-serif;
     font-size: 35px;
@@ -61,13 +118,15 @@ h2 {
 }
 
 #top-text {
-    margin-top: 200px;
+    margin-top: 20vh;
 }
 
 img {
     width: 100px;
     height: 100px;
     margin: 10px;
+    margin-top: 15px;
+    margin-bottom: 10px;
     transition: 0.3s;
 }
 
@@ -104,15 +163,16 @@ img:hover {
     flex-wrap: wrap;
     justify-content: center;
     margin-top: -5px;
-    margin-bottom: 10px;
 
     /* keep list at top of screen */
     background-color: #c0c0c0;
-    border-radius: 5px;
+    border-radius: 10px;
     position: fixed;
     top: 0;
-    width: 46%;
-    margin-left: 50vh;
+    width: 50vw;
+    /* (100-width)/2 - 10px */
+    margin-left: calc(25vw - 10px);
+
 
     /* so that list is in front of items and buttons when you scroll down */
     z-index: 1;
@@ -126,10 +186,79 @@ img:hover {
 #current-items-display img {
     border: 4px solid;
     border-radius: 5px;
-    width: 128px;
-    height: 128px;
+    width: 6.5vw;
+    height: 6.5vw;
 }
 
 #current-items-display img:hover {
     transform: scale(1.1);
+}
+
+@media only screen and (max-width: 1920px) {
+    #current-items-display {
+        width: 53vw;
+        /* (100-width)/2 - 10px */
+        margin-left: calc(23.5vw - 10px);
+    }
+}
+
+@media only screen and (max-width: 1200px) {
+    #current-items-display {
+        width: 65vw;
+        /* (100-width)/2 - 10px */
+        margin-left: calc(17.5vw - 10px);
+    }
+
+    #current-items-display img {
+        width: 7.5vw;
+        height: 7.5vw;
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+    #current-items-display {
+        width: 85vw;
+        /* (100-width)/2 - 10px */
+        margin-left: calc(7.5vw - 10px);
+    }
+
+
+    #current-items-display img {
+        width: 10vw;
+        height: 10vw;
+    }
+}
+
+@media only screen and (max-width: 700px) {
+    #current-items-display {
+        width: 75vw;
+        /* (100-width)/2 - 10px */
+        margin-left: calc(12.5vw - 10px);
+    }
+
+
+    #current-items-display img {
+        width: 15vw;
+        height: 15vw;
+    }
+
+    #top-text {
+        margin-top: 35vh;
+    }
+
+    .visiblity-button {
+        font-size: 24px;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+
+    #current-items-display img {
+        width: 18vw;
+        height: 18vw;
+    }
+
+    #top-text {
+        margin-top: 35vh;
+    }
 }
