@@ -9,26 +9,38 @@ function display() {
 }
 
 function findItem(obj) {
+    let itemLists = [
+        mythicItemList, legendaryItemList, epicItemList, basicItemList, starterItemList, bootsItemList
+    ];
+
+    let rightList;
+
     if (obj.type === "mythic") {
-        for (let i = 0; i < mythicItemList.length; i++) {
-            if (mythicItemList[i].name == obj.name) {
-                return mythicItemList[i];
-            }
-        }
+        rightList = itemLists[0];
     } else if (obj.type === "legendary") {
-        for (let i = 0; i < legendaryItemList.length; i++) {
-            if (legendaryItemList[i].name == obj.name) {
-                return legendaryItemList[i];
-            }
+        rightList = itemLists[1];
+    } else if (obj.type === "epic") {
+        rightList = itemLists[2];
+    } else if (obj.type === "basic") {
+        rightList = itemLists[3];
+    } else if (obj.type === "starter") {
+        rightList = itemLists[4];
+    } else {
+        rightList = itemLists[5];
+    }
+
+    for (let item of rightList) {
+        if (item.name === obj.name) {
+            return item;
         }
     }
 
 }
 
 function addToList(obj) {
-    let itemObj = findItem(obj);
     // problem is within findItem(), only checks for mythics, need to check for type?
     // can have multiple if statements, one for each type, OR have one master list?
+    let itemObj = findItem(obj);
 
     if (itemObj.type === "mythic" && hasMythic) {
         alert(`There is already mythic item '${currentMythic.name}' in inventory. Remove to change to a different one.`);
@@ -79,21 +91,13 @@ function displayInventoryItems() {
         } else {
             let itemObj = findItem(items[i]);
             if (itemObj.type === "mythic") {
-                let srcStr = "./src/img/mythics/" + itemObj.src + ".webp";
-                img.setAttribute("src", srcStr);
-
-                let onclickCmd = "removeFromList({name: '" + itemObj.name + "', type: \"mythic\"})";
-                img.setAttribute("onclick", onclickCmd);
-
                 img.setAttribute("id", "mythic"); // so that mythics will have yellow border in inventory
-
-            } else if (itemObj.type === "legendary") {
-                let srcStr = "./src/img/legendaries/" + itemObj.src + ".webp";
-                img.setAttribute("src", srcStr);
-
-                let onclickCmd = "removeFromList({name: '" + itemObj.name + "', type: \"legendary\"})";
-                img.setAttribute("onclick", onclickCmd);;
             }
+            let srcStr = `./src/img/${itemObj.type}/${itemObj.src}.webp`;
+            img.setAttribute("src", srcStr);
+
+            let onclickCmd = `removeFromList({name: '${itemObj.name}', type: \"${itemObj.type}\"})`;
+            img.setAttribute("onclick", onclickCmd);
 
         }
         div.appendChild(img);
@@ -103,41 +107,32 @@ function displayInventoryItems() {
 // display items in grid (addable ones)
 function displayBuyableItems() {
 
-    // mythic items
-    const mythicDiv = document.getElementById("mythic-items");
-    for (let i = 0; i < mythicItemList.length; i++) {
+    let itemType = [
+        "mythic", "legendary", "epic", "basic", "starter", "boots"
+    ];
 
-        const img = document.createElement("img");
+    let itemLists = [
+        mythicItemList, legendaryItemList, epicItemList, basicItemList, starterItemList, bootsItemList
+    ];
 
-        // set onclick
-        let onclickCmd = "addToList({name: '" + mythicItemList[i].name + "', type: \"mythic\"})";
-        img.setAttribute("onclick", onclickCmd);
+    for (let t = 0; t < itemType.length; t++) {
+        let curItemType = itemType[t];
+        const div = document.getElementById(`${curItemType}-items`);
+        for (let i = 0; i < itemLists[t].length; i++) {
+            const img = document.createElement("img");
 
-        // set src
-        let srcStr = "./src/img/mythics/" + mythicItemList[i].src + ".webp";
-        img.setAttribute("src", srcStr);
+            // set onclick
+            let onclickCmd = `addToList({name: '${itemLists[t][i].name}', type: \"${curItemType}\"})`;
+            img.setAttribute("onclick", onclickCmd);
 
-        // add image to div
-        mythicDiv.appendChild(img);
+            // set src
+            let srcStr = `./src/img/${curItemType}/${itemLists[t][i].src}.webp`;
+            img.setAttribute("src", srcStr);
+
+            div.appendChild(img);
+        }
     }
 
-    // legendary items
-    const legendaryDiv = document.getElementById("legendary-items");
-    for (let i = 0; i < legendaryItemList.length; i++) {
-
-        const img = document.createElement("img");
-
-        // set onclick
-        let onclickCmd = "addToList({name: '" + legendaryItemList[i].name + "', type: \"legendary\"})";
-        img.setAttribute("onclick", onclickCmd);
-
-        // set src
-        let srcStr = "./src/img/legendaries/" + legendaryItemList[i].src + ".webp";
-        img.setAttribute("src", srcStr);
-
-        // add image to div
-        legendaryDiv.appendChild(img);
-    }
 }
 
 
@@ -156,11 +151,9 @@ function statInfo() {
         div.appendChild(textAmtElem);
     }
 
-    // calculate and add gold efficiency as well
-
-
+    // claculate and add gold efficiency
     const goldEfficiencyStr = document.createElement("p");
-    const goldValueStr = document.createTextNode(`Gold Efficiency %`);
+    const goldValueStr = document.createTextNode(`Gold Efficiency % `);
     goldEfficiencyStr.appendChild(goldValueStr);
     div.appendChild(goldEfficiencyStr);
 
@@ -178,7 +171,7 @@ function getStatStr(stat) {
             sum += item[stat[0]];
         }
     }
-    return `${sum}`;
+    return `${sum} `;
 }
 
 
@@ -236,4 +229,4 @@ function showAllItems() {
         x.style.display = "none";
         buttonText.innerText = "Show Items";
     }
-}
+};

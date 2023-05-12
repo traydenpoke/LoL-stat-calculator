@@ -117,14 +117,22 @@ img:hover {
 }
 
 #mythic-items,
-#legendary-items {
+#legendary-items,
+#epic-items,
+#basic-items,
+#starter-items,
+#boots-items {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
 }
 
 #mythic-items img,
-#legendary-items img {
+#legendary-items img,
+#epic-items img,
+#basic-items img,
+#starter-items img,
+#boots-items img {
     border-radius: 4px;
     margin-right: 5px;
     margin-left: 5px;
@@ -134,7 +142,11 @@ img:hover {
     border: 3.5px solid #FFD700;
 }
 
-#legendary-items img {
+#legendary-items img,
+#epic-items img,
+#basic-items img,
+#starter-items img,
+#boots-items img {
     border: 3.5px solid;
 }
 
