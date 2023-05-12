@@ -19,31 +19,42 @@
 
     <h1 id="top-text"></h1>
     <div id="current-items-display"></div>
-    <button class="visiblity-button" id="stat-display-button" onclick="showStats()">Show Stats</button>
+
+    <button class="visiblity-button" id="stat-display-button" onclick="showStats()">Stats</button>
     <div id="stats-display">
         <h1>Item Stats</h1>
         <div id="stat-text"></div>
     </div>
 
-
-    <button class="visiblity-button" id="item-display-button" onclick="showAllItems()">Hide Items</button>
     <div id="items-display">
-        <h1>Mythic Items</h1>
+        <button class="visiblity-button" id="item-display-button" onclick="showHideItems('mythic')">
+            Mythic Items
+        </button>
         <div id="mythic-items"></div>
 
-        <h1>Legendary Items</h1>
+        <button class="visiblity-button" id="item-display-button" onclick="showHideItems('legendary')">
+            Legendary Items
+        </button>
         <div id="legendary-items"></div>
 
-        <h1>Epic Items</h1>
+        <button class="visiblity-button" id="item-display-button" onclick="showHideItems('epic')">
+            Epic Items
+        </button>
         <div id="epic-items"></div>
 
-        <h1>Basic Items</h1>
+        <button class="visiblity-button" id="item-display-button" onclick="showHideItems('basic')">
+            Basic Items
+        </button>
         <div id="basic-items"></div>
 
-        <h1>Starter Items</h1>
+        <button class="visiblity-button" id="item-display-button" onclick="showHideItems('starter')">
+            Starter Items
+        </button>
         <div id="starter-items"></div>
 
-        <h1>Boots</h1>
+        <button class="visiblity-button" id="item-display-button" onclick="showHideItems('boots')">
+            Boots
+        </button>
         <div id="boots-items"></div>
     </div>
 

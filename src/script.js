@@ -211,22 +211,18 @@ function showStats() {
 
     if (x.style.display === "none") {
         x.style.display = "block";
-        buttonText.innerText = "Hide Stats";
     } else {
         x.style.display = "none";
-        buttonText.innerText = "Show Stats";
     }
 }
 
-function showAllItems() {
-    const x = document.getElementById("items-display");
+function showHideItems(divTag) {
+    const x = document.getElementById(`${divTag}-items`);
     const buttonText = document.getElementById("item-display-button");
 
     if (x.style.display === "none") {
-        x.style.display = "block";
-        buttonText.innerText = "Hide Items";
+        x.style.display = "flex";
     } else {
         x.style.display = "none";
-        buttonText.innerText = "Show Items";
     }
 };
