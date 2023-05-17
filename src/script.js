@@ -121,9 +121,8 @@ function displayBuyableItems() {
         for (let i = 0; i < itemLists[t].length; i++) {
             const img = document.createElement("img");
 
-            // set onclick
-            let onclickCmd = `addToList({name: '${itemLists[t][i].name}', type: \"${curItemType}\"})`;
-            img.setAttribute("onclick", onclickCmd);
+            // nested divs:
+            // curItemType-items => item-container => img-container => text-container
 
             // set src
             let srcStr = `./src/img/${curItemType}/${itemLists[t][i].src}.webp`;
@@ -140,6 +139,11 @@ function displayBuyableItems() {
             const text = document.createElement("p");
             const textNode = document.createTextNode(itemLists[t][i].name);
             text.appendChild(textNode);
+
+            // set onclick
+            let onclickCmd = `addToList({name: '${itemLists[t][i].name}', type: \"${curItemType}\"})`;
+            textContainer.setAttribute("onclick", onclickCmd);
+
             textContainer.appendChild(text);
 
             imgContainer.appendChild(img);
