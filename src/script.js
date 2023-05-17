@@ -78,7 +78,7 @@ function removeFromList(obj) {
     display();
 }
 
-// display items in grid (removable ones)
+// display items in inventory
 function displayInventoryItems() {
     let div = document.getElementById("current-items-display");
     div.innerHTML = "";
@@ -104,7 +104,7 @@ function displayInventoryItems() {
     }
 }
 
-// display items in grid (addable ones)
+// display items in shop
 function displayBuyableItems() {
 
     let itemType = [
@@ -129,7 +129,24 @@ function displayBuyableItems() {
             let srcStr = `./src/img/${curItemType}/${itemLists[t][i].src}.webp`;
             img.setAttribute("src", srcStr);
 
-            div.appendChild(img);
+            const container = document.createElement("div");
+            container.setAttribute("class", "item-container");
+
+            const imgContainer = document.createElement("div");
+            imgContainer.setAttribute("class", "img-container");
+
+            const textContainer = document.createElement("div");
+            textContainer.setAttribute("class", "text-container");
+            const text = document.createElement("p");
+            const textNode = document.createTextNode(itemLists[t][i].name);
+            text.appendChild(textNode);
+            textContainer.appendChild(text);
+
+            imgContainer.appendChild(img);
+            imgContainer.appendChild(textContainer);
+            container.appendChild(imgContainer);
+
+            div.appendChild(container);
         }
     }
 

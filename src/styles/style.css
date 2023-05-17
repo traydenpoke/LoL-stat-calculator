@@ -102,20 +102,22 @@ h2 {
     margin-top: 20vh;
 }
 
-img {
+#current-items-display img,
+#items-display img {
     width: 100px;
     height: 100px;
     margin: 10px;
     margin-top: 15px;
     margin-bottom: 10px;
-    transition: 0.3s;
+    /*transition: 0.3s;*/
 }
 
-img:hover {
+/*#current-items-display img:hover,
+#items-display img:hover {
     cursor: pointer;
     transform: scale(1.25);
     opacity: 0.8;
-}
+}*/
 
 #mythic-items,
 #legendary-items,
