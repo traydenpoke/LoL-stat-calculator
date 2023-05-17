@@ -98,10 +98,6 @@ h2 {
     transform: scale(1.1);
 }
 
-#top-text {
-    margin-top: 20vh;
-}
-
 #current-items-display img,
 #items-display img {
     width: 100px;
@@ -210,7 +206,6 @@ h2 {
         margin-left: calc(7.5vw - 10px);
     }
 
-
     #current-items-display img {
         width: 10vw;
         height: 10vw;
@@ -224,14 +219,9 @@ h2 {
         margin-left: calc(12.5vw - 10px);
     }
 
-
     #current-items-display img {
         width: 15vw;
         height: 15vw;
-    }
-
-    #top-text {
-        margin-top: 35vh;
     }
 
     .visiblity-button {
@@ -240,13 +230,19 @@ h2 {
 }
 
 @media only screen and (max-width: 500px) {
-
     #current-items-display img {
         width: 18vw;
         height: 18vw;
     }
+}
 
-    #top-text {
-        margin-top: 35vh;
+@media only screen and (max-width: 500px) {
+    #current-items-display img {
+        width: 15vw;
+        height: 15vw;
     }
+}
+
+#stat-display-button {
+    margin-top: 250px;
 }
