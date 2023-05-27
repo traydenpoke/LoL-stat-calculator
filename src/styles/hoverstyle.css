@@ -12,8 +12,6 @@
     position: absolute;
     left: 0;
     top: 100%;
-
-
     background-color: #f9f9f9;
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -33,8 +31,12 @@
 .text-container {
     position: absolute;
     top: 15px;
-    left: 5px;
-    width: calc(100% - 16px);
+    left: 10px;
+    /* margin-left of #items-display img */
+
+    /* margin-right + margin-left + 2*border-radius of #items-display img */
+    width: calc(100% - 28px);
+
     height: calc(100% - 38px);
     background-color: #f9f9f9;
     border: 3.5px solid #fff;
@@ -47,7 +49,12 @@
 
     /* Ensure the box appears above the image */
     z-index: 5;
+}
 
+.text-container p {
+    margin: 1px;
+    font-weight: bold;
+    font-size: 14px;
 }
 
 .img-container:hover .text-container {
@@ -57,7 +64,7 @@
 .img-container:hover {
     cursor: pointer;
     transform: scale(1.25);
-    opacity: 0.8;
+    opacity: 0.9;
 }
 
 .img-container {

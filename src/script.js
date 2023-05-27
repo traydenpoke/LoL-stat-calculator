@@ -172,7 +172,7 @@ function statInfo() {
         div.appendChild(textAmtElem);
     }
 
-    // claculate and add gold efficiency
+    // calculate and add gold efficiency
     const goldEfficiencyStr = document.createElement("p");
     const goldValueStr = document.createTextNode(`Gold Efficiency % `);
     goldEfficiencyStr.appendChild(goldValueStr);
@@ -228,7 +228,6 @@ function goldStatValue(item) {
 
 function showStats() {
     const x = document.getElementById("stats-display");
-    const buttonText = document.getElementById("stat-display-button");
 
     if (x.style.display === "none") {
         x.style.display = "block";
@@ -239,7 +238,6 @@ function showStats() {
 
 function showHideItems(divTag) {
     const x = document.getElementById(`${divTag}-items`);
-    const buttonText = document.getElementById("item-display-button");
 
     if (x.style.display === "none") {
         x.style.display = "flex";

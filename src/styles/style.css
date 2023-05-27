@@ -2,7 +2,7 @@
 
 body {
     background: rgb(120, 209, 255);
-    background: linear-gradient(90deg, rgb(63, 191, 255) 0%, rgb(68, 163, 251) 50%, rgb(110, 144, 202) 100%);
+    background: linear-gradient(90deg, rgb(0, 52, 78) 0%, rgb(24, 93, 157) 50%, rgb(0, 52, 78) 100%);
     background-repeat: no-repeat;
     background-attachment: fixed;
     font-family: "Poppins", sans-serif;
@@ -46,7 +46,6 @@ h2 {
     margin-bottom: -25px;
 }
 
-
 @media only screen and (max-width: 900px) {
     #stat-text {
         font-size: 20px;
@@ -65,7 +64,6 @@ h2 {
     }
 }
 
-
 @media only screen and (max-width: 420px) {
     #stat-text {
         grid-template-columns: repeat(2, 9vh 3vh);
@@ -73,7 +71,6 @@ h2 {
         font-size: 10px;
     }
 }
-
 
 .visiblity-button {
     font-family: "Poppins", sans-serif;
@@ -118,27 +115,15 @@ h2 {
     justify-content: center;
 }
 
-#mythic-items img,
-#legendary-items img,
-#epic-items img,
-#basic-items img,
-#starter-items img,
-#boots-items img {
+#items-display img {
     border-radius: 4px;
-    margin-right: 5px;
-    margin-left: 5px;
+    margin-right: 10px;
+    margin-left: 10px;
+    border: 3.5px solid;
 }
 
 #mythic-items img {
     border: 3.5px solid #FFD700;
-}
-
-#legendary-items img,
-#epic-items img,
-#basic-items img,
-#starter-items img,
-#boots-items img {
-    border: 3.5px solid;
 }
 
 #current-items-display {
@@ -148,7 +133,7 @@ h2 {
     margin-top: -5px;
 
     /* keep list at top of screen */
-    background-color: #c0c0c0;
+    background-color: #000000;
     border-radius: 10px;
     position: fixed;
     top: 0;
@@ -156,10 +141,8 @@ h2 {
     /* (100-width)/2 - 10px */
     margin-left: calc(25vw - 10px);
 
-
     /* so that list is in front of items and buttons when you scroll down */
     z-index: 1;
-
 }
 
 #current-items-display #mythic {
@@ -169,8 +152,6 @@ h2 {
 #current-items-display img {
     border: 4px solid;
     border-radius: 5px;
-    width: 6.5vw;
-    height: 6.5vw;
     transition: 0.3s;
 }
 
